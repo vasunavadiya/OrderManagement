@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/view.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Order #12345</h1>
+    <div class="order-info">
+        <div class="order-payment">
+            <h2>Payment</h2>
+            <p th:text="*{order.paymentStatus.name()}"></p>
+        </div>
+        <div class="order-date">
+            <h2>Order Date:</h2>
+            <p th:text="*{order.orderDateTime}"></p>
+        </div>
+
+    </div>
+    <table class="order-items">
+        <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="*{order.item.name}"></td>
+            <td th:text="*{totalQuantity}"></td>
+            <td th:text="*{order.rate}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="order-total">
+        <h2>Total:</h2>
+        <p th:text="${totalPayment}"></p>
+    </div>
+
+    <H3>Paid Amounts</H3>
+    <table class="order-items">
+        <thead>
+        <tr>
+            <th>Paid Amount</th>
+            <th>-</th>
+            <th>-</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="s :${paidPayments}">
+        <tr>
+            <td th:text="*{s.paidAmount}"></td>
+            <td > -- </td>
+<!--            <td th:text="*{order.change}"></td>-->
+        </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <div class="shipping-info">
+        <h2>Customer Details</h2>
+        <div class="info-row">
+            <p th:text="*{order.customer.name}"></p>
+            <p th:text="*{order.customer.mobileNumber}"></p>
+            <p th:text="*{order.alMobileNumber}"></p>
+        </div>
+        <div class="info-row">
+            <p th:text="*{order.address}"></p>
+        </div>
+    </div>
+
+    <div th:if="${order.paymentStatus.name() != paymentStatus.name()}">
+        <form th:action="@{/order/payment}" method="post" th:object="${payment}">
+            <input type="number" name="paidAmount" th:filed="*{paidAmount}">
+            <input type="hidden" name="id" th:value="${id}">
+            <button type="submit">Pay</button>
+        </form>
+    </div>
+    <div>
+    </div>
+
+</div>
+</body>
+</html>

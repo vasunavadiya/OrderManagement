@@ -1,0 +1,57 @@
+
+/* Responsive design for mobile devices */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+    /* Add styles for the order details section */
+    .order-details {
+        margin: 20px 0;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .order-details h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .order-details p {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    /* Add styles for the product list section */
+    .product-list {
+        margin: 20px 0;
+    }
+    .product-list h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .product-list table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .product-list th,
+    .product-list td {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .product-list th {
+        background-color: #f2f2f2;
+    }
+    /* Add styles for the order summary section */
+    .order-summary {
+        margin: 20px 0;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .order-summary h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .order-summary p {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+}

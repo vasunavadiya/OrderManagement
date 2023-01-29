@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/view.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Order #12345</h1>
+    <div class="order-info">
+        <div class="order-status">
+            <h2>Delivery</h2>
+            <p th:text="*{order.deliveryStatus.name}"></p>
+        </div>
+        <div class="order-payment">
+            <h2>Delivery</h2>
+            <p th:text="*{order.paymentStatus.name()}"></p>
+        </div>
+        <div class="order-date">
+            <h2>Order Date:</h2>
+            <p th:text="*{order.orderDateTime}"></p>
+        </div>
+        <div class="order-total">
+            <h2>Total:</h2>
+            <p th:text="*{order.grandTotal}"></p>
+        </div>
+    </div>
+    <table class="order-items">
+        <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="*{order.item.name}"></td>
+            <td th:text="*{order.weight}"></td>
+            <td th:text="*{order.rate}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <h1>Delivered</h1>
+    <table class="order-items ">
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>-</th>
+            <th>Deliver</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="s :${delivered}">
+            <tr>
+                <td th:text="*{s.weight}"></td>
+                <td >-</td>
+                <td >Kg</td>
+            </tr>
+        </th:block>
+
+
+
+        </tbody>
+    </table>
+    <div class="shipping-info">
+        <h2>Customer Details</h2>
+        <div class="info-row">
+            <p th:text="*{order.customer.name}"></p>
+            <p th:text="*{order.customer.mobileNumber}"></p>
+            <p th:text="*{order.alMobileNumber}"></p>
+        </div>
+        <div class="info-row">
+            <p th:text="*{order.address}"></p>
+        </div>
+    </div>
+    <div>
+        <form th:action="@{/order/delivery}" method="post" th:object="${que}">
+            <input type="number" name="weight" th:filed="*{weight}">
+            <input type="hidden" name="id" th:value="${id}">
+            <button type="submit">Deliver</button>
+        </form>
+    </div>
+
+    <div>
+        <a th:href="@{/order/generate-payment(id=${id})}"><h3>Generate Bill</h3> </a>
+    </div>
+</div>
+</body>
+</html>

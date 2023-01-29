@@ -1,0 +1,16 @@
+
+_
+java:S1128"DRemove this unused import 'example.ordermanagement.entity.Customer'.(­†Ãıÿÿÿÿ
+V
+java:S1128"@Remove this unused import 'example.ordermanagement.entity.Item'.(ä£
+[
+java:S1128"ERemove this unused import 'example.ordermanagement.entity.ItemOrder'.(ê¹é¬
+N
+java:S1128	"8Remove this unused import 'javax.persistence.FetchType'.(‡¯¿
+S
+java:S1128
+"8Remove this unused import 'javax.persistence.ManyToOne'.(ÇÑ²øÿÿÿÿ
+M
+java:S1128"7Remove this unused import 'javax.persistence.OneToOne'.(Ø½ïâ
+V
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ËÀàÈß0
