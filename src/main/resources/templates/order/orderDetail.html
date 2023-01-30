@@ -17,24 +17,24 @@
             <p th:text="*{order.deliveryStatus.name}"></p>
         </div>
         <div class="order-payment">
-            <h2>Delivery</h2>
+            <h2>Payment status </h2>
             <p th:text="*{order.paymentStatus.name()}"></p>
         </div>
         <div class="order-date">
             <h2>Order Date:</h2>
-            <p th:text="*{order.orderDateTime}"></p>
+            <p th:text="${order.orderDateTime} "></p>
         </div>
         <div class="order-total">
-            <h2>Total:</h2>
+            <h2>કુલ રકમ:</h2>
             <p th:text="*{order.grandTotal}"></p>
         </div>
     </div>
     <table class="order-items">
         <thead>
         <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th><b>વસ્તુ</b></th>
+            <th> <b>વજન</b></th>
+            <th><b> કિંમત </b></th>
         </tr>
         </thead>
         <tbody>
@@ -47,20 +47,20 @@
         </tbody>
     </table>
 
-    <h1>Delivered</h1>
+    <h1>વિતરિત</h1>
     <table class="order-items ">
         <thead>
         <tr>
-            <th>Quantity</th>
+            <th>વજન</th>
             <th>-</th>
-            <th>Deliver</th>
+            <th>વિતરિત</th>
         </tr>
         </thead>
         <tbody>
         <th:block th:each="s :${delivered}">
             <tr>
                 <td th:text="*{s.weight}"></td>
-                <td >-</td>
+                <td >.</td>
                 <td >Kg</td>
             </tr>
         </th:block>
@@ -89,7 +89,7 @@
     </div>
 
     <div>
-        <a th:href="@{/order/generate-payment(id=${id})}"><h3>Generate Bill</h3> </a>
+        <a th:href="@{/order/generate-payment(id=${id})}"><h3>બિલ બનાવો</h3> </a>
     </div>
 </div>
 </body>

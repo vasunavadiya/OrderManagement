@@ -44,7 +44,6 @@ public class OrderController {
 
     @GetMapping("/create")
     private String creatOrder(Model model) {
-        System.out.println("hello");
         List<Item> items = itemRepository.findAllByStatusIsTrue();
         ItemOrderCreateDto createDto = new ItemOrderCreateDto();
         model.addAttribute("items", items);
